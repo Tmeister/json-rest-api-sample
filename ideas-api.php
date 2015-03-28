@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Ideas Api
  * Plugin URI:        http:/enriquechavez.co
- * Description:       ?This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       A sample plugin to create a CPT and exposed via the json-rest-api plugin.
  * Version:           1.0.0
  * Author:            Enrique Chavez
  * Author URI:        http://enriquechavez.co

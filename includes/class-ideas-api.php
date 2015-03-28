@@ -30,16 +30,6 @@
 class Ideas_Api {
 
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      Ideas_Api_Loader    $loader    Maintains and registers all hooks for the plugin.
-	 */
-	protected $loader;
-
-	/**
 	 * The unique identifier of this plugin.
 	 *
 	 * @since    1.0.0
@@ -109,6 +99,15 @@ class Ideas_Api {
 		$plugin_type = new Ideas_Api_Type();
 
 		add_action( 'init', array($plugin_type, 'create_custom_type') );
+		add_filter( 'wp_json_server_before_serve', array( $this, 'initialize_api_routes' ) );
+	}
+
+	public function initialize_api_routes($server){
+
+		//Load the Class only if the json-resp-api installed and active.
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ideas-api-endpoints.php';
+		$plugin_endpoints = new Ideas_Api_EndPoints( $server );
+		add_filter( 'json_endpoints', array( $plugin_endpoints, 'register_routes' ) );
 
 	}
 
