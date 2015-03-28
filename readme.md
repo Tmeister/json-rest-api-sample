@@ -1,0 +1,1 @@
+A sample plugin to create a CPT and exposed via the json-rest-api plugin
